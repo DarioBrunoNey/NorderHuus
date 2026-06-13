@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
@@ -8,6 +9,7 @@ import CookieConsent from '@/components/CookieConsent';
 import { WhatsAppButton, JsonLd } from '@/components/Extras';
 import { vacationRentalJsonLd } from '@/lib/seo';
 import { site } from '@/content/site';
+import { voffice } from '@/lib/voffice';
 
 /**
  * Schriften werden über next/font selbst gehostet (kein Google-Fonts-CDN
@@ -59,6 +61,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppButton />
         <CookieConsent />
         <JsonLd data={vacationRentalJsonLd()} />
+
+        {/* vOffice-Buchungswidget – global eingebunden, exakt nach vOffice-Anleitung.
+            Das Setup-Script und ex_m.js stehen damit auf jeder Seite "vor </body>". */}
+        <Script id="voffice-setup" strategy="afterInteractive">
+          {`var V = { setup: { module: '${voffice.modulePath}', memberid: ${voffice.memberId}, lang: '${voffice.lang}' } };`}
+        </Script>
+        <Script src={voffice.widgetScriptSrc} strategy="afterInteractive" />
       </body>
     </html>
   );

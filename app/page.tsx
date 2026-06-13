@@ -4,7 +4,6 @@ import Gallery from '@/components/Gallery';
 import Faq from '@/components/Faq';
 import MapEmbed from '@/components/MapEmbed';
 import { Highlights, Cta, SectionHeading } from '@/components/Sections';
-import { VofficeBooking } from '@/components/VOffice';
 import { NewsletterSignup, JsonLd } from '@/components/Extras';
 import { faqJsonLd } from '@/lib/seo';
 import { site } from '@/content/site';
@@ -98,11 +97,13 @@ export default function HomePage() {
       <section className="container-site py-16 md:py-24" id="verfuegbarkeit">
         <SectionHeading eyebrow="Verfügbarkeit" title="Freie Termine & direkt buchen" />
         <p className="mt-4 max-w-2xl text-navy/80">
-          Hier sehen Sie die aktuelle Belegung des NorderHuus und können Ihren Aufenthalt
-          direkt online buchen – ohne Umwege über Portale.
+          Auf der Buchungsseite sehen Sie die aktuelle Belegung des NorderHuus und können
+          Ihren Aufenthalt direkt online buchen – ohne Umwege über Portale.
         </p>
-        <div className="mt-10">
-          <VofficeBooking />
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Link href="/preise-und-verfuegbarkeit" className="btn-primary">
+            Verfügbarkeit prüfen & buchen
+          </Link>
         </div>
       </section>
 
