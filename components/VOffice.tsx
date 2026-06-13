@@ -62,10 +62,10 @@ export function VofficeBooking() {
 export function BookingButtons({ className = '' }: { className?: string }) {
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
-      <Link href="/preise-und-verfuegbarkeit/" className="btn-secondary">
+      <Link href="/preise-und-verfuegbarkeit" className="btn-secondary">
         Verfügbarkeit prüfen
       </Link>
-      <Link href="/preise-und-verfuegbarkeit/" className="btn-primary">
+      <Link href="/preise-und-verfuegbarkeit" className="btn-primary">
         Jetzt buchen
       </Link>
     </div>

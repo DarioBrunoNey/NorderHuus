@@ -27,10 +27,10 @@ export default function Hero() {
           </h1>
           <p className="mt-4 max-w-xl text-base text-white/90 md:text-lg">{site.hero.subheadline}</p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="/preise-und-verfuegbarkeit/" className="btn-primary">
+            <Link href="/preise-und-verfuegbarkeit" className="btn-primary">
               Jetzt buchen
             </Link>
-            <Link href="/preise-und-verfuegbarkeit/" className="btn-secondary">
+            <Link href="/preise-und-verfuegbarkeit" className="btn-secondary">
               Verfügbarkeit prüfen
             </Link>
           </div>

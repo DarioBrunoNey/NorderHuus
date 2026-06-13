@@ -40,7 +40,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/preise-und-verfuegbarkeit/" className="btn-primary !py-2.5">
+          <Link href="/preise-und-verfuegbarkeit" className="btn-primary !py-2.5">
             Jetzt buchen
           </Link>
         </nav>
@@ -75,7 +75,7 @@ export default function Header() {
               </li>
             ))}
             <li className="pb-2 pt-3">
-              <Link href="/preise-und-verfuegbarkeit/" className="btn-primary w-full">
+              <Link href="/preise-und-verfuegbarkeit" className="btn-primary w-full">
                 Jetzt buchen
               </Link>
             </li>

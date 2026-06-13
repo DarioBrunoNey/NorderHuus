@@ -1,13 +1,10 @@
-# Cloudflare Workers Static Assets – Konfiguration für das NorderHuus
-# Liefert die statisch exportierte Next.js-Seite (Ordner "out") aus.
-# Reine Statik-Auslieferung, kein Worker-Script (daher kein "main", kein "binding").
+# Cloudflare Workers Static Assets – NorderHuus
+# Reine Statik-Auslieferung aus dem Ordner "out".
 name = "norderhuus"
 compatibility_date = "2025-01-01"
 
 [assets]
 directory = "./out"
-# auto-trailing-slash: HTML-Seiten bekommen einen Slash (/kontakt/),
-# statische Dateien (CSS/JS unter /_next/...) bleiben OHNE Slash – sonst 404.
-html_handling = "auto-trailing-slash"
-# Bei unbekannter URL die exportierte 404-Seite ausliefern.
+# Standardverhalten (auto). Ohne trailingSlash in Next.js gibt es keine
+# Slash-Konflikte mit den /_next/static-Dateien -> CSS/JS laden zuverlässig.
 not_found_handling = "404-page"
