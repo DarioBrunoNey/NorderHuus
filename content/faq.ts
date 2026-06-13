@@ -36,7 +36,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: 'Wann ist Check-in?',
-    answer: 'Der Check-in ist ab 15:00 Uhr möglich. Andere Zeiten gern auf Anfrage.',
+    answer: 'Der Check-in ist ab 16:00 Uhr möglich. Andere Zeiten gern auf Anfrage.',
   },
   {
     question: 'Wann ist Check-out?',

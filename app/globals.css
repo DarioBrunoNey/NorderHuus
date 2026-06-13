@@ -5,6 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Etwas größere Grundschrift für bessere Lesbarkeit (Standard: 16px) */
+    font-size: 17.5px;
   }
 
   @media (prefers-reduced-motion: reduce) {

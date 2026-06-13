@@ -23,8 +23,8 @@ export default function PreisePage() {
           und können direkt buchen.
         </p>
 
-        <div className="mt-12" id="kalender">
-          <h2 className="mb-4 font-display text-xl font-medium text-navy" id="buchen">
+        <div className="mt-12">
+          <h2 className="mb-4 font-display text-xl font-medium text-navy">
             Belegungskalender, Preise & Online-Buchung
           </h2>
           <VofficeBooking />

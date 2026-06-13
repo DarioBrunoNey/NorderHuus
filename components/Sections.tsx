@@ -53,10 +53,10 @@ export function Cta({
           <p className="mt-2 max-w-xl text-navy/75">{text}</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Link href="/preise-und-verfuegbarkeit#kalender" className="btn-secondary whitespace-nowrap">
+          <Link href="/preise-und-verfuegbarkeit/" className="btn-secondary whitespace-nowrap">
             Verfügbarkeit prüfen
           </Link>
-          <Link href="/preise-und-verfuegbarkeit#buchen" className="btn-primary whitespace-nowrap">
+          <Link href="/preise-und-verfuegbarkeit/" className="btn-primary whitespace-nowrap">
             Jetzt buchen
           </Link>
         </div>

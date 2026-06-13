@@ -138,7 +138,7 @@ export const site = {
   ],
 
   // Check-in / Check-out – TODO: Zeiten prüfen
-  checkin: 'ab 15:00 Uhr',
+  checkin: 'ab 16:00 Uhr',
   checkout: 'bis 10:00 Uhr',
 
   // Newsletter (optional). enabled=true + formAction eintragen (z. B. von Brevo/Mailchimp/CleverReach)

@@ -6,8 +6,8 @@ compatibility_date = "2025-01-01"
 
 [assets]
 directory = "./out"
-# Next.js exportiert mit trailingSlash: true Ordner mit index.html
-# (z. B. /kontakt/index.html) -> Slash erzwingen, passt zueinander.
-html_handling = "force-trailing-slash"
+# auto-trailing-slash: HTML-Seiten bekommen einen Slash (/kontakt/),
+# statische Dateien (CSS/JS unter /_next/...) bleiben OHNE Slash – sonst 404.
+html_handling = "auto-trailing-slash"
 # Bei unbekannter URL die exportierte 404-Seite ausliefern.
 not_found_handling = "404-page"

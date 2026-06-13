@@ -44,7 +44,7 @@ export function vacationRentalJsonLd() {
     },
     petsAllowed: false,
     smokingAllowed: false,
-    checkinTime: '15:00',
+    checkinTime: '16:00',
     checkoutTime: '10:00',
     ...(site.contact.phone || site.contact.mobile
       ? { telephone: site.contact.phone || site.contact.mobile }
