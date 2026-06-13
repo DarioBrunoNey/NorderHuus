@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-white text-navy-deep antialiased;
+  }
+
+  ::selection {
+    @apply bg-sand-300 text-navy-deep;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-navy ring-offset-2;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8;
+  }
+
+  /* Eyebrow: kleines Label über Überschriften */
+  .eyebrow {
+    @apply mb-3 block text-xs font-semibold uppercase tracking-[0.22em] text-sand-500;
+  }
+
+  .h-display {
+    @apply font-display font-medium leading-tight text-navy;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3.5 text-sm font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply btn bg-navy text-white hover:bg-navy-light;
+  }
+
+  .btn-secondary {
+    @apply btn border border-navy bg-white/80 text-navy hover:bg-sand-100;
+  }
+
+  .prose-site p + p {
+    @apply mt-4;
+  }
+}
