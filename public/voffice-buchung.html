@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buchung NorderHuus</title>
+<style>
+  /* Grundgerüst, damit das Widget sauber und in Markenschrift erscheint */
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  body {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #18324E;
+  }
+  /* etwas Luft, damit das Widget nicht am Rand klebt */
+  #vo-wrap { padding: 4px; }
+</style>
+</head>
+<body>
+  <div id="vo-wrap">
+    <!-- Schritt 1 der vOffice-Anleitung: der Baustein -->
+    <div v-switch="layout"></div>
+  </div>
+
+  <!-- Schritt 2 der vOffice-Anleitung: Setup + ex_m.js, exakt wie vorgegeben -->
+  <script type="text/javascript">
+    var V = {
+      setup: {
+        module: '.booking_with_calendar/Nordsee/Norden/DHH.DO10B',
+        memberid: 3174,
+        lang: 'de'
+      }
+    };
+  </script>
+  <script type="text/javascript" async src="https://dyn.v-office.com/resource/js/ex_m.js"></script>
+
+  <!-- Höhe an die einbettende Seite melden, damit kein Inhalt abgeschnitten wird -->
+  <script type="text/javascript">
+    (function () {
+      var last = 0;
+      function reportHeight() {
+        var h = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight
+        );
+        if (h !== last) {
+          last = h;
+          if (window.parent) {
+            window.parent.postMessage({ vofficeHeight: h }, '*');
+          }
+        }
+      }
+      // regelmäßig prüfen (das Widget baut sich asynchron auf und ändert die Höhe)
+      setInterval(reportHeight, 500);
+      window.addEventListener('load', reportHeight);
+    })();
+  </script>
+</body>
+</html>
