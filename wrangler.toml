@@ -1,0 +1,13 @@
+# Cloudflare Workers Static Assets – Konfiguration für das NorderHuus
+# Liefert die statisch exportierte Next.js-Seite (Ordner "out") aus.
+# Reine Statik-Auslieferung, kein Worker-Script (daher kein "main", kein "binding").
+name = "norderhuus"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./out"
+# Next.js exportiert mit trailingSlash: true Ordner mit index.html
+# (z. B. /kontakt/index.html) -> Slash erzwingen, passt zueinander.
+html_handling = "force-trailing-slash"
+# Bei unbekannter URL die exportierte 404-Seite ausliefern.
+not_found_handling = "404-page"
