@@ -1,16 +1,33 @@
-import Link from 'next/link';
+'use client';
 
-/**
- * vOffice-Buchungsstrecke – Baustein gemäß vOffice-Anleitung (Schritt 1):
- * Nur der Container <div v-switch="layout">. Das Setup-Script und ex_m.js
- * werden global im Layout (app/layout.tsx) eingebunden – exakt wie von
- * vOffice vorgegeben ("vor </body>"). Das Widget sucht beim Laden diesen
- * Container und rendert dort Kalender, Preise und Buchung.
- */
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+
 export function VofficeBooking() {
+  const ref = useRef<HTMLIFrameElement>(null);
+  const [height, setHeight] = useState(640);
+
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      const h = e?.data?.vofficeHeight;
+      if (typeof h === 'number' && h > 200) {
+        setHeight(h + 24);
+      }
+    }
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, []);
+
   return (
     <div className="min-h-[520px]">
-      <div {...{ 'v-switch': 'layout' }} />
+      <iframe
+        ref={ref}
+        src="/voffice-buchung.html"
+        title="Belegungskalender, Preise und Online-Buchung NorderHuus"
+        className="w-full border-0"
+        style={{ height }}
+        loading="lazy"
+      />
       <noscript>
         <p>
           Für die Online-Buchung wird JavaScript benötigt. Alternativ erreichen Sie uns
@@ -21,7 +38,6 @@ export function VofficeBooking() {
   );
 }
 
-/** Buchen-Buttons, die auf die Buchungsseite führen */
 export function BookingButtons({ className = '' }: { className?: string }) {
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
