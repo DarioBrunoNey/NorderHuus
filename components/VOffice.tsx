@@ -3,6 +3,15 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * vOffice-Buchungsstrecke – isoliert in einem iframe.
+ *
+ * Warum iframe? Das vOffice-Widget (ex_m.js) startet eine eigene AngularJS-App
+ * und übernimmt <html>/<body>. Das kollidiert mit React/Next.js, die dasselbe
+ * DOM kontrollieren. Im iframe bekommt vOffice ein eigenes, sauberes Dokument
+ * (public/voffice-buchung.html) und läuft dort konfliktfrei – exakt nach
+ * vOffice-Anleitung. Die Höhe wird per postMessage automatisch angepasst.
+ */
 export function VofficeBooking() {
   const ref = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState(640);
@@ -11,7 +20,7 @@ export function VofficeBooking() {
     function onMessage(e: MessageEvent) {
       const h = e?.data?.vofficeHeight;
       if (typeof h === 'number' && h > 200) {
-        setHeight(h + 24);
+        setHeight(h + 24); // kleiner Puffer
       }
     }
     window.addEventListener('message', onMessage);
@@ -38,6 +47,7 @@ export function VofficeBooking() {
   );
 }
 
+/** Buchen-Buttons, die auf die Buchungsseite führen */
 export function BookingButtons({ className = '' }: { className?: string }) {
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>

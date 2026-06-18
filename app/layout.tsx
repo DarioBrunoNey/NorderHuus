@@ -9,6 +9,10 @@ import { WhatsAppButton, JsonLd } from '@/components/Extras';
 import { vacationRentalJsonLd } from '@/lib/seo';
 import { site } from '@/content/site';
 
+/**
+ * Schriften werden über next/font selbst gehostet (kein Google-Fonts-CDN
+ * zur Laufzeit → DSGVO-konform und schnell).
+ */
 const display = Fraunces({
   subsets: ['latin'],
   variable: '--font-display',
