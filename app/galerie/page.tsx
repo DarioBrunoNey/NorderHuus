@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Gallery from '@/components/Gallery';
 import { SectionHeading, Cta } from '@/components/Sections';
 import { JsonLd } from '@/components/Extras';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, galleryImagesJsonLd } from '@/lib/seo';
 import { galleryImages } from '@/content/gallery';
 
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default function GaleriePage() {
       </section>
       <Cta />
       <JsonLd data={breadcrumbJsonLd([{ name: 'Bildergalerie', path: '/galerie' }])} />
+      <JsonLd data={galleryImagesJsonLd()} />
     </>
   );
 }

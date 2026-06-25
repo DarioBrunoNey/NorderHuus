@@ -28,6 +28,14 @@ export const site = {
     bathrooms: 2,
   },
 
+  // Für strukturierte Daten (Schema.org). Ausfüllen, sobald bekannt – dann
+  // werden sie automatisch ins JSON-LD übernommen. 0/leer = wird weggelassen.
+  schemaExtras: {
+    numberOfBeds: 0, // z. B. 4 (Gesamtzahl Schlafgelegenheiten) – TODO
+    starRating: 0, // offizielle DTV-/Sterne-Klassifizierung, z. B. 4 – TODO (sonst 0)
+    priceFrom: 0, // "ab"-Preis pro Nacht in EUR, z. B. 95 – TODO (sonst 0)
+  },
+
   // Kontakt
   contact: {
     company: 'Ferienwohnungen Bruno',
@@ -46,9 +54,9 @@ export const site = {
     street: 'Dortmunder Straße 10b',
     zipCity: '26506 Norden',
     region: 'Ostfriesland, Niedersachsen',
-    // Koordinaten der Dortmunder Straße (OSM-Straßendaten) – Marker ggf. feinjustieren
-    lat: 53.5931,
-    lng: 7.1872,
+    // Exakte Koordinaten des Hauses Dortmunder Straße 10b (6 Dezimalstellen)
+    lat: 53.594583,
+    lng: 7.185507,
   },
 
   // Highlights mit Icon-Schlüssel (Icons: components/Icons.tsx)
