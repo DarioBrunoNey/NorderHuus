@@ -141,9 +141,11 @@ function accommodationNode() {
     '@type': ['Accommodation', 'House'],
     '@id': ID.accommodation,
     name: site.name,
-    additionalType: 'https://schema.org/House',
+    identifier: 'norderhuus-norden-do10b',
+    additionalType: 'House',
     occupancy: {
       '@type': 'QuantitativeValue',
+      value: site.facts.persons,
       maxValue: site.facts.persons,
       unitText: 'Personen',
     },
@@ -156,9 +158,15 @@ function accommodationNode() {
     numberOfBathroomsTotal: site.facts.bathrooms,
     numberOfRooms: site.facts.bedrooms,
     ...(site.schemaExtras.numberOfBeds > 0
-      ? { numberOfBeds: site.schemaExtras.numberOfBeds }
+      ? {
+          numberOfBeds: site.schemaExtras.numberOfBeds,
+          bed: {
+            '@type': 'BedDetails',
+            numberOfBeds: site.schemaExtras.numberOfBeds,
+            typeOfBed: 'Doppelbett',
+          },
+        }
       : {}),
-    // numberOfBeds: TODO – sobald exakte Bettenzahl/Betttypen bekannt
     petsAllowed: false,
     smokingAllowed: false,
     amenityFeature: amenities(),
@@ -177,6 +185,7 @@ function lodgingNode() {
     name: site.name,
     description: site.tagline,
     url: ORIGIN,
+    identifier: 'norderhuus-norden-do10b',
     image: listingImages(),
     address: propertyAddress(),
     geo: {
@@ -211,24 +220,26 @@ function lodgingNode() {
       name: 'Direkt buchen',
       target: `${ORIGIN}/preise-und-verfuegbarkeit`,
     },
-    // Direktbuchungs-Link auch als Offer-Hinweis (Preise dynamisch über vOffice)
-    makesOffer: {
-      '@type': 'Offer',
-      url: `${ORIGIN}/preise-und-verfuegbarkeit`,
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'EUR',
-      businessFunction: 'https://schema.org/LeaseOut',
-      ...(site.schemaExtras.priceFrom > 0
-        ? {
+    // Offer nur ausgeben, wenn ein echter "ab"-Preis hinterlegt ist – ein leeres
+    // Offer ohne Preis erzeugt bei Google nur Warnungen. Preise laufen sonst
+    // dynamisch über das vOffice-Buchungswidget.
+    ...(site.schemaExtras.priceFrom > 0
+      ? {
+          makesOffer: {
+            '@type': 'Offer',
+            url: `${ORIGIN}/preise-und-verfuegbarkeit`,
+            availability: 'https://schema.org/InStock',
+            priceCurrency: 'EUR',
+            businessFunction: 'https://schema.org/LeaseOut',
             priceSpecification: {
               '@type': 'PriceSpecification',
               minPrice: site.schemaExtras.priceFrom,
               priceCurrency: 'EUR',
               description: 'Preis pro Nacht ab',
             },
-          }
-        : {}),
-    },
+          },
+        }
+      : {}),
   };
 }
 

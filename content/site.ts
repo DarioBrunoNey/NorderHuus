@@ -31,9 +31,9 @@ export const site = {
   // Für strukturierte Daten (Schema.org). Ausfüllen, sobald bekannt – dann
   // werden sie automatisch ins JSON-LD übernommen. 0/leer = wird weggelassen.
   schemaExtras: {
-    numberOfBeds: 0, // z. B. 4 (Gesamtzahl Schlafgelegenheiten) – TODO
+    numberOfBeds: 3, // 3 Doppelbetten (180x200)
     starRating: 0, // offizielle DTV-/Sterne-Klassifizierung, z. B. 4 – TODO (sonst 0)
-    priceFrom: 0, // "ab"-Preis pro Nacht in EUR, z. B. 95 – TODO (sonst 0)
+    priceFrom: 90, // "ab"-Preis pro Nacht in EUR
   },
 
   // Kontakt

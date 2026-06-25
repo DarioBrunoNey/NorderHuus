@@ -20,7 +20,8 @@ export default function PreisePage() {
         <p className="mt-4 max-w-2xl text-navy/80">
           Die aktuellen Preise und freien Termine werden live aus unserem Buchungssystem
           geladen. Wählen Sie einfach Ihren Wunschzeitraum – Sie sehen sofort den Preis
-          und können direkt buchen.
+          und können direkt buchen. Das NorderHuus ist ab 90&nbsp;€ pro Nacht buchbar
+          (saison- und belegungsabhängig).
         </p>
 
         <div className="mt-12">
